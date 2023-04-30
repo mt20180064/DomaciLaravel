@@ -17,3 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::get('/stadions/{id}', [\App\Http\Controllers\StadionController::class, 'show']);
+//Route::get('/stadions',[\App\Http\Controllers\StadionController::class, 'index']);
+
+Route::resource('stadions', \App\Http\Controllers\StadionController::class);
+Route::resource('sponzors', \App\Http\Controllers\SponzorController::class);
+Route::post('/register',[AuthController::class, 'register']);
+Route::post('/login',[AuthController::class, 'login']);
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('/profile', function(Request $request){
+        return auth()->user();
+    });
+    Route::resource('stadion', \App\Http\Controllers\StadionController::class)->only(['update', 'store', 'destroy']);
+});
+Route::resource('pokrivenosts', \App\Http\Controllers\PokrivenostController::class);
+
+    
+

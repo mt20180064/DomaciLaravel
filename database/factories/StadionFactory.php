@@ -17,7 +17,12 @@ class StadionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'naziv'=>$this->faker->word(),
+            'klub'=>$this->faker->word(),
+            'kapacitet'=>$this->faker->randomNumber(),
+            'pokrivenost_id'=>\App\Models\Pokrivenost::factory(),
+            'sponzor_id'=>\App\Models\Sponzor::factory(),
+            'user_id'=>\App\Models\User::factory()
         ];
     }
 }
