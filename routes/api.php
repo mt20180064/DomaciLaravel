@@ -23,8 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('stadions', \App\Http\Controllers\StadionController::class);
 Route::resource('sponzors', \App\Http\Controllers\SponzorController::class);
-Route::post('/register',[AuthController::class, 'register']);
-Route::post('/login',[AuthController::class, 'login']);
+Route::post('/register',[\App\Http\Controllers\API\AuthController::class, 'register']);
+Route::post('/login',[\App\Http\Controllers\API\AuthController::class, 'login']);
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::get('/profile', function(Request $request){
         return auth()->user();

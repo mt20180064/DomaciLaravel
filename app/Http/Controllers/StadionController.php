@@ -48,7 +48,7 @@ class StadionController extends Controller
             'kapacitet'=>$request->kapacitet,
             'pokrivenost_id'=>$request->pokrivenost_id,
             'sponzor_id'=>$request->sponzor_id,
-            'user_id'=>Auth::user()->id
+            'user_id'=>$request->user_id
             
             
 ,        ]);
